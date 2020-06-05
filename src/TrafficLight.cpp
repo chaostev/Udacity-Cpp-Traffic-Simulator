@@ -73,8 +73,9 @@ void TrafficLight::cycleThroughPhases()
     	auto start = std::chrono::system_clock::now();
 		std::default_random_engine generator;
       	std::uniform_int_distribution<int> cycle_dist(4000, 6000);  // ms
+		auto duration = std::chrono::milliseconds(cycle_dist(generator));
       	
-      	while (std::chrono::system_clock::now() - start < std::chrono::milliseconds(cycle_dist(generator))) {
+      	while (std::chrono::system_clock::now() - start < duration) {
         	std::this_thread::sleep_for(std::chrono::milliseconds(1));
         }
       
